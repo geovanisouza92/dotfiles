@@ -1,0 +1,3 @@
+#!/bin/bash
+
+source ~/.dotfiles/gibo/gibo-completion.bash
