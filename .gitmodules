@@ -1,3 +1,6 @@
 [submodule "gibo"]
 	path = gibo
 	url = https://github.com/simonwhitaker/gibo
+[submodule "powerline-shell"]
+	path = powerline-shell
+	url = https://github.com/geovanisouza92/powerline-shell
