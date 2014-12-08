@@ -114,9 +114,18 @@ if ! shopt -oq posix; then
 fi
 
 
+# Updating prompt
 function _update_ps1() {
-   export PS1="$(~/.powerline-shell.py $? 2> /dev/null)"
+   export PS1="$(python ~/.dotfiles/powerline-shell/powerline-shell.py $? 2> /dev/null)"
 }
 export PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
 
-export PATH=$PATH:$HOME/.local/bin
+
+# Exporting paths
+[ -e $HOME/.paths.txt ] && eval export PATH="\$PATH:$(cat $HOME/.paths.txt | paste -sd ':' -)" || true
+
+
+# Virtualenvwrapper bootstrap
+export WORKON_HOME=$HOME/Envs
+[ -e /usr/local/bin/virtualenvwrapper.sh ] && source /usr/local/bin/virtualenvwrapper.sh || true
+[ -e $HOME/.local/bin/virtualenvwrapper.sh ] && source $HOME/.local/bin/virtualenvwrapper.sh || true
