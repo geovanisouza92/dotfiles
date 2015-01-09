@@ -129,3 +129,4 @@ export PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
 export WORKON_HOME=$HOME/Envs
 [ -e /usr/local/bin/virtualenvwrapper.sh ] && source /usr/local/bin/virtualenvwrapper.sh || true
 [ -e $HOME/.local/bin/virtualenvwrapper.sh ] && source $HOME/.local/bin/virtualenvwrapper.sh || true
+[[ -s $HOME/.gvm/scripts/gvm ]] && source $HOME/.gvm/scripts/gvm
