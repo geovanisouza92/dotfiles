@@ -121,6 +121,12 @@ function _update_ps1() {
 export PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
 
 
+# Git clone shorthand
+function gh() {
+    git clone "https://github.com/$@"
+}
+
+
 # Exporting paths
 [ -e $HOME/.paths.txt ] && eval export PATH="\$PATH:$(cat $HOME/.paths.txt | paste -sd ':' -)" || true
 
