@@ -102,6 +102,10 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
+if [ -f ~/.bash_functions ]; then
+    . ~/.bash_functions
+fi
+
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
@@ -119,12 +123,6 @@ function _update_ps1() {
    export PS1="$(python ~/.dotfiles/powerline-shell/powerline-shell.py $? 2> /dev/null)"
 }
 export PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
-
-
-# Git clone shorthand
-function gh() {
-    git clone "https://github.com/$@"
-}
 
 
 # Exporting paths
