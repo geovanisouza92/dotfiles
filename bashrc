@@ -118,6 +118,11 @@ if ! shopt -oq posix; then
 fi
 
 
+if [ -f ~/.dotfiles/bashmarks/bashmarks.sh ]; then
+    . ~/.dotfiles/bashmarks/bashmarks.sh
+fi
+
+
 # Updating prompt
 function _update_ps1() {
    export PS1="$(python ~/.dotfiles/powerline-shell/powerline-shell.py $? 2> /dev/null)"
