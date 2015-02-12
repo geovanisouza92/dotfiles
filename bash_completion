@@ -1,3 +1,4 @@
 #!/bin/bash
 
 source ~/.dotfiles/gibo/gibo-completion.bash
+source /etc/bash_completion.d/docker
