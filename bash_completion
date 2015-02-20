@@ -2,3 +2,4 @@
 
 source ~/.dotfiles/gibo/gibo-completion.bash
 source /etc/bash_completion.d/docker
+source ~/.dotfiles/vagrant-bash-completion/etc/bash_completion.d/vagrant
