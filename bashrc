@@ -131,7 +131,7 @@ export PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
 
 
 # Exporting paths
-[ -e $HOME/.paths.txt ] && eval export PATH="\$PATH:$(cat $HOME/.paths.txt | paste -sd ':' -)" || true
+[ -e $HOME/.custom.path ] && eval export PATH="\$PATH:$(cat $HOME/.custom.path | paste -sd ':' -)" || true
 
 
 # Virtualenvwrapper bootstrap
