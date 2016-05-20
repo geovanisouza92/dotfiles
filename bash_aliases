@@ -1,7 +1,20 @@
 
-alias p='cd $HOME/Projetos'
-alias server='python -m SimpleHTTPServer'
+alias c='cd $HOME/Code'
+alias server='python -m SimpleHTTPServer $@'
 alias subl='$HOME/Apps/sublime_text_3/sublime_text'
-alias update-flynn-cli='L=~/.local/bin/flynn && curl -sL -A "`uname -sp`" https://cli.flynn.io/flynn.gz | zcat >$L && chmod +x $L'
+alias update-flynn-cli='L=~/.local/bin/flynn && curl -sL -A "`uname -sp`" https://dl.flynn.io/cli | zcat >$L && chmod +x $L'
+alias update-docker-compose='L=~/.local/bin/docker-compose && curl -L https://github.com/docker/compose/releases/download/$1/docker-compose-`uname -s`-`uname -m` > $L && chmod +x $L'
 alias gits='git status -u'
 alias dps='docker ps -a | less -S'
+alias ibus-android-studio='IBUS_ENABLE_SYNC_MODE=1 ibus-daemon -xrd'
+
+alias ga='git add '
+alias gb='git branch '
+alias gc='git commit -m '
+alias gs='git status '
+alias gpu='git pull'
+alias gp='git push '
+alias gpo='git push origin master'
+
+alias dcompose='docker-compose'
+alias dmachine='docker-machine'

@@ -117,25 +117,39 @@ if ! shopt -oq posix; then
   fi
 fi
 
-
 if [ -f ~/.dotfiles/bashmarks/bashmarks.sh ]; then
     . ~/.dotfiles/bashmarks/bashmarks.sh
 fi
 
-
 # Updating prompt
 function _update_ps1() {
-   export PS1="$(python ~/.dotfiles/powerline-shell/powerline-shell.py $? 2> /dev/null)"
+   export PS1="$(python ~/.dotfiles/powerline-shell/powerline-shell.py --cwd-max-depth=2 $? 2> /dev/null)"
 }
 export PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
-
 
 # Exporting paths
 [ -e $HOME/.custom.path ] && eval export PATH="\$PATH:$(cat $HOME/.custom.path | paste -sd ':' -)" || true
 
-
 # Virtualenvwrapper bootstrap
-export WORKON_HOME=$HOME/Envs
+export WORKON_HOME=$HOME/.envs
 [ -e /usr/local/bin/virtualenvwrapper.sh ] && source /usr/local/bin/virtualenvwrapper.sh || true
 [ -e $HOME/.local/bin/virtualenvwrapper.sh ] && source $HOME/.local/bin/virtualenvwrapper.sh || true
-[[ -s $HOME/.gvm/scripts/gvm ]] && source $HOME/.gvm/scripts/gvm
+
+# [[ -s $HOME/.gvm/scripts/gvm ]] && source $HOME/.gvm/scripts/gvm
+[ -e $HOME/.dotfiles/gibo/gibo-completion.bash ] && source $HOME/.dotfiles/gibo/gibo-completion.bash || true
+
+export NVM_DIR="/home/geovani/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+### Added by the Heroku Toolbelt
+# export PATH="/usr/local/heroku/bin:$PATH"
+
+export ANDROID_HOME=$HOME/Android/Sdk
+export GOROOT=$HOME/.local/go
+export GOPATH=$HOME/Code/go
+export GO15VENDOREXPERIMENT=1
+# export PYTHONPATH=$PYTHONPATH:$HOME/Apps/google_appengine/
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+# export GIT_EDITOR="subl --wait --new-window"
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting

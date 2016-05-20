@@ -1,2 +1,3 @@
 [TYPECHECK]
-generated-members=objects,DoesNotExist,id,pk,_meta
+generated-members=objects,DoesNotExist,id,pk,_meta,[a-zA-Z]+_set,[a-zA-Z]+_id,.save()
+disable=C0111,R0903,W0232

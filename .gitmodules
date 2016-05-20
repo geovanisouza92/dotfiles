@@ -1,12 +1,12 @@
 [submodule "gibo"]
 	path = gibo
 	url = https://github.com/simonwhitaker/gibo
-[submodule "powerline-shell"]
-	path = powerline-shell
-	url = https://github.com/geovanisouza92/powerline-shell
 [submodule "bashmarks"]
 	path = bashmarks
 	url = https://github.com/huyng/bashmarks
 [submodule "vagrant-bash-completion"]
 	path = vagrant-bash-completion
 	url = https://github.com/kura/vagrant-bash-completion
+[submodule "powerline-shell"]
+	path = powerline-shell
+	url = https://github.com/milkbikis/powerline-shell

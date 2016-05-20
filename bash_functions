@@ -14,6 +14,22 @@ function push() {
     fi
 }
 
+function pulldb {
+    adb -d shell "run-as $1 cat /data/data/$1/databases/$2 > /sdcard/$2"
+    adb pull "/sdcard/$2"
+}
+
+function app-backup() {
+    if [[ -z $1 ]]; then
+        echo 'Informe o nome do pacote'
+        return 1
+    fi
+    adb backup -f $1.ab -noapk -noshared $1
+    java -jar ~/.dotfiles/abe.jar unpack $1.ab $1.tar
+    tar -xf $1.tar
+    rm $1.ab $1.tar
+}
+
 
 # Git clone shorthand
 function gh() {
@@ -24,4 +40,20 @@ function gh() {
 # Extract a column from a tabular output
 function col {
     awk -v col=$1 '{print $col}'
+}
+
+function goloc {
+    for pkg in $(go list $1/...); do
+        wc -l $(go list -f '{{range .GoFiles}}{{$.Dir}}/{{.}} {{end}}' $pkg) | \
+            tail -1 | awk '{ print $1 " '$pkg'" }'
+    done | sort -nr
+}
+
+function gograph {
+    (
+        echo "digraph G {"
+        go list -f '{{range .Imports}}{{printf "\t%q -> %q;\n" $.ImportPath .}}{{end}}' \
+            $(go list -f '{{join .Deps " "}}' $1) $1
+        echo "}"
+    ) | dot -Tsvg -o gograph.svg
 }
